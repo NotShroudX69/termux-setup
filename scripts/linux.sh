@@ -55,7 +55,7 @@ supress_output \
     virgl_test_server_android &
 
 supress_output \
-    proot-distro login debian \
+    proot-distro login linux \
         --termux-home \
         --shared-tmp \
         -- bash -c "
