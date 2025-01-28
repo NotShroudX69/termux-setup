@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# By Ryuk Github | TG : [ anonymousx97 ]
+# By Ryuk Github | TG : [ NotShroudX69 ]
 
 red="\033[1;31m"
 white="\033[0m"
@@ -20,7 +20,7 @@ start() {
   1. Install Essential packages.
   2. Customize Termux.
   3. Both 1 & 2 (Uses Presets for customisation)
-  4. Setup Debian in Termux.
+  4. Setup Linux in Termux.
   5. Exit
 "
     all() {
@@ -33,7 +33,7 @@ start() {
         [1]="package_setup"
         [2]="customize"
         [3]="all"
-        [4]="setup_debian"
+        [4]="setup_linux"
         [5]="exit_"
     )
 
@@ -154,7 +154,7 @@ package_setup() {
 }
 
 
-setup_debian() {
+setup_linux() {
     apt update
     apt install -y root-repo x11-repo
     apt install -y \
@@ -163,7 +163,7 @@ setup_debian() {
         termux-x11-nightly \
         pulseaudio
 
-    proot-distro install debian
+    proot-distro install linux
 
     clear
 
@@ -183,7 +183,7 @@ setup_debian() {
 
     ask "${options}" "Window Manager Menu:" "wm_dict"
 
-    proot-distro login debian --termux-home --shared-tmp -- bash -c "
+    proot-distro login linux --termux-home --shared-tmp -- bash -c "
         apt update -y
 
         apt install -y \
@@ -203,20 +203,20 @@ setup_debian() {
         "
 
     curl -s -O --output-dir "${HOME}" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/scripts/debian.sh
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/scripts/linux.sh
 
-    sed -i "s/wm_start_cmd/${wm_cmd}/" "${HOME}/debian.sh"
+    sed -i "s/wm_start_cmd/${wm_cmd}/" "${HOME}/linux.sh"
 
     echo '
-alias dcli="proot-distro login debian --termux-home --shared-tmp -- bash"
-alias dgui="bash debian.sh"
+alias dcli="proot-distro login linux --termux-home --shared-tmp -- bash"
+alias dgui="bash linux.sh"
 '>> "${HOME}/.bashrc"
 
-    echo '[[ "$(whoami)" == "root" ]] && export HISTFILE=~/.debian_history' >> "${HOME}/.bashrc"
+    echo '[[ "$(whoami)" == "root" ]] && export HISTFILE=~/.linux_history' >> "${HOME}/.bashrc"
 
     echo "Done."
 
-    echo -e "You can now use '${green}dcli${white}' for debian cli and '${green}dgui${white}' for GUI (Termux x11 app required)."
+    echo -e "You can now use '${green}lcli${white}' for linux cli and '${green}lgui${white}' for GUI (Termux x11 app required)."
 
 }
 
@@ -225,7 +225,7 @@ setup_apm() {
     echo -e "\n1. Downloading Android Package Manager By Ryuk."
 
     curl -s -O --output-dir "${PATH}" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/bin/apm
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/bin/apm
 
     chmod +x "${PATH}/apm"
 
@@ -237,7 +237,7 @@ setup_aria2() {
     echo -e "\n2. Downloading Aria2 shortcut"
 
     curl -s -O --output-dir "${PATH}" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/bin/arc
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/bin/arc
 
     chmod +x "${PATH}/arc"
 
@@ -251,7 +251,7 @@ setup_ytdlp() {
     mkdir -p "${HOME}/bin"
 
     curl -s -O --output-dir "${HOME}/bin" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/bin/termux-url-opener
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/bin/termux-url-opener
 
     echo -e "${green}Done.${white}"
 }
@@ -261,7 +261,7 @@ setup_prettify() {
     echo -e "\n4. Downloading and Setting up Prettify script."
 
     curl -s -O --output-dir "${PATH}" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/bin/prettify
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/bin/prettify
 
     chmod +x "${PATH}/prettify"
 
@@ -273,7 +273,7 @@ setup_rxfetch() {
     echo -e "\n5. Downloading and Setting up Rxfetch"
 
     curl -s -O --output-dir "${PATH}" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/bin/rxfetch
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/bin/rxfetch
 
     chmod +x "${PATH}/rxfetch"
 
@@ -358,10 +358,10 @@ change_ui() {
     fi
 
     curl -s -o "${HOME}/.termux/colors.properties" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/.termux/"${colors}"
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/.termux/"${colors}"
 
     wget -q -O "${HOME}/.termux/font.ttf" \
-        https://raw.githubusercontent.com/anonymousx97/termux-setup/main/.termux/MesloLGS_NF_Bold.ttf
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/.termux/MesloLGS_NF_Bold.ttf
 
     echo -e "\n${green}Applying Changes.${white}"
 
@@ -383,7 +383,7 @@ save_setup_sh() {
     echo -e "\nSaving setup.sh for future use."
 
     echo -e \
-            '#!/bin/bash\nbash -c "$(curl -fsSL https://raw.githubusercontent.com/anonymousx97/termux-setup/main/setup.sh)"' \
+            '#!/bin/bash\nbash -c "$(curl -fsSL https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/setup.sh)"' \
             > "${PATH}/setup-termux"
 
     chmod +x "${PATH}/setup-termux"
