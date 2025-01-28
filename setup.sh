@@ -208,8 +208,8 @@ setup_linux() {
     sed -i "s/wm_start_cmd/${wm_cmd}/" "${HOME}/linux.sh"
 
     echo '
-alias dcli="proot-distro login linux --termux-home --shared-tmp -- bash"
-alias dgui="bash linux.sh"
+alias lcli="proot-distro login linux --termux-home --shared-tmp -- bash"
+alias lgui="bash linux.sh"
 '>> "${HOME}/.bashrc"
 
     echo '[[ "$(whoami)" == "root" ]] && export HISTFILE=~/.linux_history' >> "${HOME}/.bashrc"
