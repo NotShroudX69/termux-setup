@@ -163,6 +163,18 @@ setup_kali() {
         termux-x11-nightly \
         pulseaudio
 
+    # Add Kali configuration for proot-distro
+    kali_conf="${PREFIX}/etc/proot-distro/kali.sh"
+    if [ ! -f "${kali_conf}" ]; then
+        echo "# Kali-Linux Arm64 Edition
+DISTRO_NAME=\"kali\"
+DISTRO_COMMENT=\"Kali-Linux Arm64 (Official Edition)\"
+TARBALL_URL['aarch64']=\"https://kali.download/nethunter-images/current/rootfs/kali-nethunter-rootfs-minimal-arm64.tar.xz\"
+TARBALL_SHA256['aarch64']=\"fad2607aa841015eac428c0f23289b1a3f8039c5377d16f4fc46206e22d6c45a\"
+" > "${kali_conf}"
+    fi
+
+    # Now install Kali using the custom configuration
     proot-distro install kali
 
     clear
@@ -172,6 +184,7 @@ setup_kali() {
 2. Install KDE
 3. Exit
 "
+    # ... keep the rest of your existing setup_kali() function unchanged
     wm=""
     wm_cmd=""
 
