@@ -55,7 +55,7 @@ supress_output \
     virgl_test_server_android &
 
 supress_output \
-    proot-distro login linux \
+    proot-distro login kali \
         --termux-home \
         --shared-tmp \
         -- bash -c "
