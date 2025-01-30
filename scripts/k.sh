@@ -1,5 +1,5 @@
-# Kali nethunter arm64
-DISTRO_NAME="kali Nethunter (arm64)"
-DISTRO_COMMENT="Kali nethunter arm64 (official version)"
-TARBALL_URL['aarch64']="https://kali.download/nethunter-images/current/rootfs/kalifs-arm64-minimal.tar.xz"
-TARBALL_SHA256['aarch64']="b35534aa0dca0fdf4940836124efdb2faae2cb2e850182e82a8789da5b60b164"
+# Kali-Linux Arm64 Edition
+DISTRO_NAME="kali"
+DISTRO_COMMENT="Kali-Linux Arm64 (Official Edition)"
+TARBALL_URL['aarch64']="https://kali.download/nethunter-images/current/rootfs/kali-nethunter-rootfs-minimal-arm64.tar.xz"
+TARBALL_SHA256['aarch64']="fad2607aa841015eac428c0f23289b1a3f8039c5377d16f4fc46206e22d6c45a"
