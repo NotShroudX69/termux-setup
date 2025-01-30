@@ -221,8 +221,8 @@ TARBALL_SHA256['aarch64']=\"fad2607aa841015eac428c0f23289b1a3f8039c5377d16f4fc46
     sed -i "s/wm_start_cmd/${wm_cmd}/" "${HOME}/kali.sh"
 
     echo '
-alias dcli="proot-distro login kali --termux-home --shared-tmp -- bash"
-alias dgui="bash kali.sh"
+alias kcli="proot-distro login kali --termux-home --shared-tmp -- bash"
+alias kgui="bash kali.sh"
 '>> "${HOME}/.bashrc"
 
     echo '[[ "$(whoami)" == "root" ]] && export HISTFILE=~/.linux_history' >> "${HOME}/.bashrc"
