@@ -20,7 +20,7 @@ start() {
   1. Install Essential packages.
   2. Customize Termux.
   3. Both 1 & 2 (Uses Presets for customisation)
-  4. Setup Linux in Termux.
+  4. Setup Kali in Termux.
   5. Exit
 "
     all() {
@@ -33,7 +33,7 @@ start() {
         [1]="package_setup"
         [2]="customize"
         [3]="all"
-        [4]="setup_linux"
+        [4]="setup_kali"
         [5]="exit_"
     )
 
@@ -154,7 +154,7 @@ package_setup() {
 }
 
 
-setup_linux() {
+setup_kali() {
     apt update
     apt install -y root-repo x11-repo
     apt install -y \
@@ -163,7 +163,7 @@ setup_linux() {
         termux-x11-nightly \
         pulseaudio
 
-    proot-distro install linux
+    proot-distro install kali
 
     clear
 
@@ -183,7 +183,7 @@ setup_linux() {
 
     ask "${options}" "Window Manager Menu:" "wm_dict"
 
-    proot-distro login linux --termux-home --shared-tmp -- bash -c "
+    proot-distro login kali --termux-home --shared-tmp -- bash -c "
         apt update -y
 
         apt install -y \
@@ -203,20 +203,20 @@ setup_linux() {
         "
 
     curl -s -O --output-dir "${HOME}" \
-        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/scripts/linux.sh
+        https://raw.githubusercontent.com/NotShroudX69/termux-setup/main/scripts/kali.sh
 
-    sed -i "s/wm_start_cmd/${wm_cmd}/" "${HOME}/linux.sh"
+    sed -i "s/wm_start_cmd/${wm_cmd}/" "${HOME}/kali.sh"
 
     echo '
-alias lcli="proot-distro login linux --termux-home --shared-tmp -- bash"
-alias lgui="bash linux.sh"
+alias dcli="proot-distro login kali --termux-home --shared-tmp -- bash"
+alias dgui="bash kali.sh"
 '>> "${HOME}/.bashrc"
 
     echo '[[ "$(whoami)" == "root" ]] && export HISTFILE=~/.linux_history' >> "${HOME}/.bashrc"
 
     echo "Done."
 
-    echo -e "You can now use '${green}lcli${white}' for linux cli and '${green}lgui${white}' for GUI (Termux x11 app required)."
+    echo -e "You can now use '${green}kcli${white}' for kali cli and '${green}kgui${white}' for GUI (Termux x11 app required)."
 
 }
 
