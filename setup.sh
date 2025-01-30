@@ -165,7 +165,7 @@ setup_kali() {
 
     # Install Kali Linux in Proot-Distro
     mkdir -p \$PREFIX/etc/proot-distro/
-    cat <<EOC > \$PREFIX/etc/proot-distro/kali.sh
+    cat \$PREFIX/etc/proot-distro/kali.sh
     # Kali-Linux Arm64 Edition
     DISTRO_NAME="kali"
     DISTRO_COMMENT="Kali-Linux Arm64 (Official Edition)"
